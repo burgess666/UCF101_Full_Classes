@@ -1,5 +1,5 @@
 #!/bin/sh
-#sbatch --job-name=KQH_lstm --gres=gpu:0 --mem=65536 --cpus-per-task=4 --output=./output/output_train_all_models.out launch_train_all_models.sh
+#sbatch --job-name=KQH_lstm --gres=gpu:0 --mem=65536 --cpus-per-task=4 --output=output/output_train_all_models.out launch_train_all_models.sh
 
 
 python3 train.py -m lstm

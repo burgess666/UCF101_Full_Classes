@@ -23,15 +23,15 @@ def extract_files():
 
     Extracting can be done with ffmpeg:
     `ffmpeg -i video.mpg image-%04d.jpg
-     First 30 classes:
+     Full 101 classes :
 
     train:
-            2282 avi
-            476857 jpg
+            9537 avis
+            1788425 jpgs
 
     test:
-            1151 avi
-            186640 jpg
+            3783 avis
+            697865 jpgs
     """
     data_file = []
     folders = ['train', 'test']
