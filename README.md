@@ -33,9 +33,9 @@ Now you can run the scripts in the data folder to move the videos to the appropr
 `python 2_extract_files.py`
 
 Notes: Full Classes involved: 
-
-1. Train:  avi,  jpg
-2. Test:  avi,  jpg
+Total: 13320 videos, 2486290 jpgs
+1. Train:  9537 videos,  1788425 jpgs
+2. Test:  3783 videos,  697865 jpgs
 
 ## Extracting features
 
