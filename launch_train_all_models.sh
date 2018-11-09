@@ -8,6 +8,6 @@ python3 train.py -m lcrn
 
 python3 train.py -m mlp
 
-python3 train.py -m c3d
+#python3 train.py -m c3d
 
-python3 train.py -m conv_3d
+#python3 train.py -m conv_3d
