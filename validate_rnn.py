@@ -84,7 +84,7 @@ def main():
                      image_shape=image_shape, class_limit=101)
 
         else:
-            saved_model = '/data/d14122793/ucf101_full/checkpoints/ mlp-features.006-1.030.hdf5'
+            saved_model = '/data/d14122793/ucf101_full/checkpoints/mlp-features.006-1.030.hdf5'
             validate(data_type, model, saved_model=saved_model,
                      image_shape=image_shape, class_limit=101)
     else:
