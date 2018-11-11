@@ -100,3 +100,24 @@ totalMemory: 11.17GiB freeMemory: 11.10GiB
 2018-11-11 20:25:28.734204: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
 2018-11-11 20:25:28.734211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
 2018-11-11 20:25:28.734501: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10757 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:3d:00.0, compute capability: 3.7)
+Using TensorFlow backend.
+Loading model /data/d14122793/ucf101_full/checkpoints/lstm-features.028-1.069.hdf5
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+lstm_1 (LSTM)                (None, 2048)              33562624  
+_________________________________________________________________
+dense_1 (Dense)              (None, 512)               1049088   
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 512)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 101)               51813     
+=================================================================
+Total params: 34,663,525
+Trainable params: 34,663,525
+Non-trainable params: 0
+_________________________________________________________________
+None
+Creating test generator with 3418 samples.
+[1.1898386613377985, 0.7004716981132075, 0.9009433962264151]
+['loss', 'acc', 'top_k_categorical_accuracy']
