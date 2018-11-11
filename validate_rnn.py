@@ -33,15 +33,15 @@ def validate(data_type, model, seq_length=40, saved_model=None,
     test_generator = data.frame_generator(batch_size, 'test', data_type)
 
     # Get the model.
-    #rm = ResearchModels(len(data.classes), model, seq_length, saved_model)
+    rm = ResearchModels(len(data.classes), model, seq_length, saved_model)
 
-    model = load_model(saved_model)
+    #model = load_model(saved_model)
 
     # Evaluate!
     #results = rm.model.evaluate_generator(
      #   generator=val_generator,
       #  val_samples=3200)
-    results = model.evaluate_generator(generator=test_generator, steps=test_data_num // batch_size)
+    results = rm.model.evaluate_generator(generator=test_generator, steps=test_data_num // batch_size)
     print(results)
     print(model.metrics)
     print(model.metrics_names)
