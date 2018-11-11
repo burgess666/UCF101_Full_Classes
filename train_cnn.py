@@ -12,9 +12,10 @@ from keras.optimizers import SGD
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
-from keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping
+from keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping, CSVLogger
 from data import DataSet
 import os.path
+import time
 
 data = DataSet()
 
@@ -29,6 +30,10 @@ early_stopper = EarlyStopping(patience=10)
 
 # Helper: TensorBoard
 tensorboard = TensorBoard(log_dir=os.path.join('/data/d14122793/ucf101_full', 'logs'))
+
+timestamp = time.time()
+csv_logger = CSVLogger(os.path.join('/data/d14122793/ucf101_full', 'logs', 'CNN_training-' + \
+                                    str(timestamp) + '.log'))
 
 def get_generators():
     train_datagen = ImageDataGenerator(
@@ -122,7 +127,8 @@ def main(weights_file):
         print("Loading network from ImageNet weights.")
         # Get and train the top layers.
         model = freeze_all_but_top(model)
-        model = train_model(model, 10, generators)
+        model = train_model(model, 100, generators,
+                            [early_stopper])
     else:
         print("Loading saved model: %s." % weights_file)
         model.load_weights(weights_file)
@@ -130,7 +136,7 @@ def main(weights_file):
     # Get and train the mid layers.
     model = freeze_all_but_mid_and_top(model)
     model = train_model(model, 1000, generators,
-                        [checkpointer, early_stopper, tensorboard])
+                        [checkpointer, early_stopper, tensorboard, csv_logger])
 
 if __name__ == '__main__':
     weights_file = None
