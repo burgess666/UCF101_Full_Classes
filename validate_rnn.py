@@ -63,17 +63,17 @@ def main():
         if model == 'conv_3d':
             saved_model = '/data/d14122793/ucf101_full/checkpoints/conv_3d-images.****.hdf5'
             validate(data_type, model, saved_model=saved_model,
-                     image_shape=image_shape, class_limit=30)
+                     image_shape=image_shape, class_limit=101)
 
         elif model == 'c3d':
             saved_model = '/data/d14122793/ucf101_full/checkpoints/c3d-images.****.hdf5'
             validate(data_type, model, saved_model=saved_model,
-                     image_shape=image_shape, class_limit=30)
+                     image_shape=image_shape, class_limit=101)
 
         else:
             saved_model = '/data/d14122793/ucf101_full/checkpoints/lrcn-images.033-3.831.hdf5'
             validate(data_type, model, saved_model=saved_model,
-                     image_shape=image_shape, class_limit=30)
+                     image_shape=image_shape, class_limit=101)
 
     elif model in ['lstm', 'mlp']:
         data_type = 'features'
@@ -82,12 +82,12 @@ def main():
         if model == 'lstm':
             saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.028-1.069.hdf5'
             validate(data_type, model, saved_model=saved_model,
-                     image_shape=image_shape, class_limit=30)
+                     image_shape=image_shape, class_limit=101)
 
         else:
             saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.028-1.069.hdf5'
             validate(data_type, model, saved_model=saved_model,
-                     image_shape=image_shape, class_limit=30)
+                     image_shape=image_shape, class_limit=101)
     else:
         raise ValueError("Invalid model. Please choose one of them: conv_3d, c3d, lrcn, lstm, mlp.")
 
