@@ -1,5 +1,5 @@
 #!/bin/sh
-#sbatch --job-name=KQ_val_rnn --gres=gpu:0 --mem=65536 --cpus-per-task=8 launch_validate_rnn.sh
+#sbatch --job-name=KQ_val_rnn --gres=gpu:0 --mem=32000 --cpus-per-task=4  --output=output/output_val_lstm_lrcn_mlp.out launch_validate_rnn.sh
 
 python3 validate_rnn.py -m lstm
 

@@ -71,7 +71,7 @@ def main():
                      image_shape=image_shape, class_limit=30)
 
         else:
-            saved_model = '/data/d14122793/ucf101_full/checkpoints/lrcn-images.****.hdf5'
+            saved_model = '/data/d14122793/ucf101_full/checkpoints/lrcn-images.033-3.831.hdf5'
             validate(data_type, model, saved_model=saved_model,
                      image_shape=image_shape, class_limit=30)
 
@@ -80,12 +80,12 @@ def main():
         image_shape = None
 
         if model == 'lstm':
-            saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.****.hdf5'
+            saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.028-1.069.hdf5'
             validate(data_type, model, saved_model=saved_model,
                      image_shape=image_shape, class_limit=30)
 
         else:
-            saved_model = '/data/d14122793/ucf101_full/checkpoints/mlp-features.****.hdf5'
+            saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.028-1.069.hdf5'
             validate(data_type, model, saved_model=saved_model,
                      image_shape=image_shape, class_limit=30)
     else:
