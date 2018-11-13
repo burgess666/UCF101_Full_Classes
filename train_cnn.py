@@ -108,6 +108,7 @@ def freeze_all_but_mid_and_top(model):
 
     return model
 
+
 def train_model(model, nb_epoch, generators, callbacks=[]):
     train_generator, validation_generator = generators
     model.fit_generator(
@@ -119,6 +120,7 @@ def train_model(model, nb_epoch, generators, callbacks=[]):
         callbacks=callbacks)
     return model
 
+
 def main(weights_file):
     model = get_model()
     generators = get_generators()
@@ -127,8 +129,8 @@ def main(weights_file):
         print("Loading network from ImageNet weights.")
         # Get and train the top layers.
         model = freeze_all_but_top(model)
-        model = train_model(model, 100, generators,
-                            [early_stopper])
+        model = train_model(model, 10, generators)
+
     else:
         print("Loading saved model: %s." % weights_file)
         model.load_weights(weights_file)
@@ -137,6 +139,7 @@ def main(weights_file):
     model = freeze_all_but_mid_and_top(model)
     model = train_model(model, 1000, generators,
                         [checkpointer, early_stopper, tensorboard, csv_logger])
+
 
 if __name__ == '__main__':
     weights_file = None
