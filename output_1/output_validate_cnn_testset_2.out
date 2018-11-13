@@ -1,0 +1,11 @@
+2018-11-11 19:22:17.628883: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-11-11 19:22:19.815692: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2018-11-11 19:22:19.815805: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: ADAPT-03
+2018-11-11 19:22:19.815824: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: ADAPT-03
+2018-11-11 19:22:19.815909: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 396.26.0
+2018-11-11 19:22:19.815976: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 396.26.0
+2018-11-11 19:22:19.815990: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 396.26.0
+Using TensorFlow backend.
+Found 697865 images belonging to 101 classes.
+[1.642917284381733, 0.578500085733882, 0.8312114197530864]
+['accuracy', 'top_k_categorical_accuracy']
