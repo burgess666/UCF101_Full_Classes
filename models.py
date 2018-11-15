@@ -1,11 +1,11 @@
 """
 A collection of models we'll use to attempt to classify videos.
 """
-from keras.layers import Dense, Flatten, Dropout, ZeroPadding3D
+from keras.layers import Input, Dense, Flatten, Dropout, ZeroPadding3D
 from keras.layers.recurrent import LSTM
 from keras.models import Sequential, load_model, Model
 from keras.optimizers import Adam, RMSprop
-from keras.layers.wrappers import TimeDistributed, Input
+from keras.layers.wrappers import TimeDistributed
 from keras.applications.vgg16 import VGG16
 from keras.layers.convolutional import (Conv2D, MaxPooling3D, Conv3D,
     MaxPooling2D)
