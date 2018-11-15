@@ -49,7 +49,7 @@ class ResearchModels():
             self.model = self.lstm()
         elif model == 'lrcn':
             print("Loading CNN-LSTM model.")
-            self.input_shape = (seq_length, 224, 224, 3)
+            self.input_shape = (seq_length, 80, 80, 3)
             self.model = self.lrcn()
         elif model == 'mlp':
             print("Loading simple MLP.")
@@ -57,11 +57,11 @@ class ResearchModels():
             self.model = self.mlp()
         elif model == 'conv_3d':
             print("Loading Conv3D")
-            self.input_shape = (seq_length, 224, 224, 3)
+            self.input_shape = (seq_length, 80, 80, 3)
             self.model = self.conv_3d()
         elif model == 'c3d':
             print("Loading C3D")
-            self.input_shape = (seq_length, 224, 224, 3)
+            self.input_shape = (seq_length, 80, 80, 3)
             self.model = self.c3d()
         else:
             print("Unknown network.")
@@ -146,7 +146,7 @@ class ResearchModels():
         for layer in pretrained_cnn.layers[:-5]:
             layer.trainable = False
         # input shape required by pretrained_cnn
-        input = Input(shape=(224, 224, 3))
+        input = Input(shape=(80, 80, 3))
         x = pretrained_cnn(input)
         x = Flatten()(x)
         x = Dense(2048)(x)
