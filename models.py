@@ -146,7 +146,7 @@ class ResearchModels():
         for layer in pretrained_cnn.layers[:-5]:
             layer.trainable = False
         # input shape required by pretrained_cnn
-        input = Input(shape=(80, 80, 3))
+        input = Input(shape=(224, 224, 3))
         x = pretrained_cnn(input)
         x = Flatten()(x)
         x = Dense(2048)(x)
