@@ -82,6 +82,7 @@ def train(data_type, seq_length, model, saved_model=None,
             validation_steps=40,
             workers=4)
 
+
 def main():
     """These are the main training settings. Set each before running
     this file."""
@@ -104,7 +105,7 @@ def main():
     # Chose images or features and image shape based on network.
     if model in ['conv_3d', 'c3d', 'lrcn']:
         data_type = 'images'
-        image_shape = (80, 80, 3)
+        image_shape = (224, 224, 3)
     elif model in ['lstm', 'mlp']:
         data_type = 'features'
         image_shape = None
@@ -114,6 +115,7 @@ def main():
     train(data_type, seq_length, model, saved_model=saved_model,
           class_limit=class_limit, image_shape=image_shape,
           load_to_memory=load_to_memory, batch_size=batch_size, nb_epoch=nb_epoch)
+
 
 if __name__ == '__main__':
     main()

@@ -58,7 +58,7 @@ def main():
 
     if model in ['conv_3d', 'c3d', 'lrcn']:
         data_type = 'images'
-        image_shape = (80, 80, 3)
+        image_shape = (299, 299, 3)
         if model == 'conv_3d':
             saved_model = '/data/d14122793/ucf101_full/checkpoints/conv_3d-images.****.hdf5'
             validate(data_type, model, saved_model=saved_model,

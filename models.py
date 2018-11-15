@@ -3,9 +3,10 @@ A collection of models we'll use to attempt to classify videos.
 """
 from keras.layers import Dense, Flatten, Dropout, ZeroPadding3D
 from keras.layers.recurrent import LSTM
-from keras.models import Sequential, load_model
+from keras.models import Sequential, load_model, Model
 from keras.optimizers import Adam, RMSprop
-from keras.layers.wrappers import TimeDistributed
+from keras.layers.wrappers import TimeDistributed, Input
+from keras.applications.vgg16 import VGG16
 from keras.layers.convolutional import (Conv2D, MaxPooling3D, Conv3D,
     MaxPooling2D)
 from collections import deque
@@ -48,7 +49,7 @@ class ResearchModels():
             self.model = self.lstm()
         elif model == 'lrcn':
             print("Loading CNN-LSTM model.")
-            self.input_shape = (seq_length, 80, 80, 3)
+            self.input_shape = (seq_length, 224, 224, 3)
             self.model = self.lrcn()
         elif model == 'mlp':
             print("Loading simple MLP.")
@@ -56,11 +57,11 @@ class ResearchModels():
             self.model = self.mlp()
         elif model == 'conv_3d':
             print("Loading Conv3D")
-            self.input_shape = (seq_length, 80, 80, 3)
+            self.input_shape = (seq_length, 224, 224, 3)
             self.model = self.conv_3d()
         elif model == 'c3d':
             print("Loading C3D")
-            self.input_shape = (seq_length, 80, 80, 3)
+            self.input_shape = (seq_length, 224, 224, 3)
             self.model = self.c3d()
         else:
             print("Unknown network.")
@@ -100,6 +101,8 @@ class ResearchModels():
         Also known as an LRCN:
             https://arxiv.org/pdf/1411.4389.pdf
         """
+
+        '''
         model = Sequential()
 
         model.add(TimeDistributed(Conv2D(32, (7, 7), strides=(2, 2),
@@ -136,6 +139,23 @@ class ResearchModels():
 
         model.add(Dropout(0.5))
         model.add(LSTM(256, return_sequences=False, dropout=0.5))
+        model.add(Dense(self.nb_classes, activation='softmax'))
+        '''
+        pretrained_cnn = VGG16(weights='imagenet', include_top=False)
+        # pretrained_cnn.trainable = False
+        for layer in pretrained_cnn.layers[:-5]:
+            layer.trainable = False
+        # input shape required by pretrained_cnn
+        input = Input(shape=(224, 224, 3))
+        x = pretrained_cnn(input)
+        x = Flatten()(x)
+        x = Dense(2048)(x)
+        x = Dropout(0.5)(x)
+        pretrained_cnn = Model(inputs=input, output=x)
+
+        model = Sequential()
+        model.add(TimeDistributed(pretrained_cnn, input_shape=self.input_shape))
+        model.add(LSTM(1024, return_sequences=False, dropout=0.5))
         model.add(Dense(self.nb_classes, activation='softmax'))
 
         return model
