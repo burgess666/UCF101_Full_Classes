@@ -79,7 +79,7 @@ def main():
         image_shape = None
 
         if model == 'lstm':
-            saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.028-1.069.hdf5'
+            saved_model = '/data/d14122793/ucf101_full/checkpoints/lstm-features.025-1.044.hdf5'
             validate(data_type, model, saved_model=saved_model,
                      image_shape=image_shape, class_limit=101)
 

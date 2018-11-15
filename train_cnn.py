@@ -26,7 +26,7 @@ checkpointer = ModelCheckpoint(
     save_best_only=True)
 
 # Helper: Stop when we stop learning.
-early_stopper = EarlyStopping(patience=10)
+early_stopper = EarlyStopping(patience=50)
 
 # Helper: TensorBoard
 tensorboard = TensorBoard(log_dir=os.path.join('/data/d14122793/ucf101_full', 'logs'))
@@ -129,7 +129,7 @@ def main(weights_file):
         print("Loading network from ImageNet weights.")
         # Get and train the top layers.
         model = freeze_all_but_top(model)
-        model = train_model(model, 10, generators)
+        model = train_model(model, 1000, generators,[early_stopper])
 
     else:
         print("Loading saved model: %s." % weights_file)

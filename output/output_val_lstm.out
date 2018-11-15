@@ -1,0 +1,31 @@
+2018-11-15 09:38:26.966630: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-11-15 09:38:29.693128: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla K40m major: 3 minor: 5 memoryClockRate(GHz): 0.745
+pciBusID: 0000:82:00.0
+totalMemory: 11.17GiB freeMemory: 11.09GiB
+2018-11-15 09:38:29.693184: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-11-15 09:38:30.073730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-11-15 09:38:30.073802: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-11-15 09:38:30.073810: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-11-15 09:38:30.074145: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10747 MB memory) -> physical GPU (device: 0, name: Tesla K40m, pci bus id: 0000:82:00.0, compute capability: 3.5)
+Using TensorFlow backend.
+Loading model /data/d14122793/ucf101_full/checkpoints/lstm-features.025-1.044.hdf5
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+lstm_1 (LSTM)                (None, 2048)              33562624  
+_________________________________________________________________
+dense_1 (Dense)              (None, 512)               1049088   
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 512)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 101)               51813     
+=================================================================
+Total params: 34,663,525
+Trainable params: 34,663,525
+Non-trainable params: 0
+_________________________________________________________________
+None
+Creating test generator with 3418 samples.
+[1.2563178364960652, 0.6680424528301887, 0.8985849056603774]
+['loss', 'acc', 'top_k_categorical_accuracy']

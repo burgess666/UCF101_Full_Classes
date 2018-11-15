@@ -13,7 +13,7 @@ from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
 
 data = DataSet()
-def main(nb_images=5):
+def main():
     # CNN model evaluate
 
     test_data_gen = ImageDataGenerator(rescale=1. / 255)
@@ -23,7 +23,7 @@ def main(nb_images=5):
                                                        batch_size=batch_size, classes=data.classes,
                                                        class_mode='categorical')
     # load the trained model that has been saved in CNN_train_UCF101.py, your model name maybe is not the same as follow
-    model = load_model('/data/d14122793/ucf101_full/checkpoints/inception.022-1.61.hdf5')
+    model = load_model('/data/d14122793/ucf101_full/checkpoints/inception.036-1.60.hdf5')
     results = model.evaluate_generator(generator=test_generator, steps=test_data_num // batch_size)
     print(results)
     print(model.metrics)
