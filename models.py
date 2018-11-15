@@ -101,8 +101,6 @@ class ResearchModels():
         Also known as an LRCN:
             https://arxiv.org/pdf/1411.4389.pdf
         """
-
-        '''
         model = Sequential()
 
         model.add(TimeDistributed(Conv2D(32, (7, 7), strides=(2, 2),
@@ -140,13 +138,14 @@ class ResearchModels():
         model.add(Dropout(0.5))
         model.add(LSTM(256, return_sequences=False, dropout=0.5))
         model.add(Dense(self.nb_classes, activation='softmax'))
+
         '''
         pretrained_cnn = VGG16(weights='imagenet', include_top=False)
         # pretrained_cnn.trainable = False
         for layer in pretrained_cnn.layers[:-5]:
             layer.trainable = False
         # input shape required by pretrained_cnn
-        input = Input(shape=(224, 224, 3))
+        input = Input(shape=(80, 80, 3))
         x = pretrained_cnn(input)
         x = Flatten()(x)
         x = Dense(2048)(x)
@@ -157,6 +156,7 @@ class ResearchModels():
         model.add(TimeDistributed(pretrained_cnn, input_shape=self.input_shape))
         model.add(LSTM(1024, return_sequences=False, dropout=0.5))
         model.add(Dense(self.nb_classes, activation='softmax'))
+        '''
 
         return model
 
